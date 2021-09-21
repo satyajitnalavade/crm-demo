@@ -1,9 +1,10 @@
-package com.example.crm.service;
+package com.example.crm.backend.service;
 
-import com.example.crm.entity.Company;
-import com.example.crm.entity.Contact;
-import com.example.crm.repository.CompanyRepository;
-import com.example.crm.repository.ContactRepository;
+import com.example.crm.backend.entity.Company;
+import com.example.crm.backend.entity.Contact;
+import com.example.crm.backend.repository.CompanyRepository;
+import com.example.crm.backend.repository.ContactRepository;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
@@ -28,6 +29,17 @@ public class ContactService {
 
     public List<Contact> findAll() {
         return contactRepository.findAll();
+    }
+
+    public List<Contact> findAll(String filterText) {
+        if ((filterText == "") || (filterText.isEmpty())) {
+            return contactRepository.findAll();
+        }
+        else
+        {
+            return contactRepository.search(filterText);
+        }
+
     }
 
     public long count() {

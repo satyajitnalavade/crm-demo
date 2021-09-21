@@ -1,8 +1,10 @@
-package com.example.crm.entity;
+package com.example.crm.backend.entity;
+
+
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
+
 import java.util.LinkedList;
 import java.util.List;
 

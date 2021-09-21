@@ -1,4 +1,4 @@
-package com.example.crm.entity;
+package com.example.crm.backend.entity;
 
 import org.hibernate.Hibernate;
 

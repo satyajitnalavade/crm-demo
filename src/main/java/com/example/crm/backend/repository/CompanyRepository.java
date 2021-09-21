@@ -1,6 +1,6 @@
-package com.example.crm.repository;
+package com.example.crm.backend.repository;
 
-import com.example.crm.entity.Company;
+import com.example.crm.backend.entity.Company;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
