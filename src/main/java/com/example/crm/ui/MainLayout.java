@@ -12,11 +12,19 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.HighlightConditions;
 import com.vaadin.flow.router.RouterLink;
+import com.vaadin.flow.server.PWA;
 
 /**
  * @author satya
  */
 
+@PWA(
+        name="Demo CRM",
+        shortName = "CRM",
+        enableInstallPrompt = false
+
+
+)
 @CssImport("./styles/shared-styles.css")
 public class MainLayout extends AppLayout {
 
