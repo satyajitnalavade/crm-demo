@@ -12,7 +12,6 @@ import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Map;
 
@@ -52,8 +51,6 @@ public class DashboardView extends VerticalLayout {
         chart.getConfiguration().setSeries(dataSeries);
         return chart;
     }
-
-
 
     private Span getContactStats() {
         Span stats = new Span(contactService.count() + " Contacts");

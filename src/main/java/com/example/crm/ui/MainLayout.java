@@ -37,8 +37,7 @@ public class MainLayout extends AppLayout {
 
     private void createDrawer() {
         RouterLink listLink = new RouterLink("List", ListView.class);
-        listLink.setHighlightCondition(HighlightConditions.sameLocation());
-
+            listLink.setHighlightCondition(HighlightConditions.sameLocation());
         RouterLink dashboard = new RouterLink("Dashboard", DashboardView.class);
 
         addToDrawer(

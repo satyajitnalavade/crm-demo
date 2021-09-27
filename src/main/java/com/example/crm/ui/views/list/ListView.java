@@ -5,6 +5,8 @@ import com.example.crm.backend.entity.Contact;
 import com.example.crm.backend.service.CompanyService;
 import com.example.crm.backend.service.ContactService;
 import com.example.crm.ui.MainLayout;
+import com.vaadin.flow.component.Key;
+import com.vaadin.flow.component.KeyModifier;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.Div;
@@ -31,6 +33,7 @@ public class ListView extends VerticalLayout {
     public ListView(ContactService contactService, CompanyService companyService) {
         this.contactService = contactService;
         this.companyService = companyService;
+
         addClassName("list-view");
         setSizeFull();
         configureGrid();
@@ -40,14 +43,30 @@ public class ListView extends VerticalLayout {
         contactForm.addListener(ContactForm.DeleteEvent.class,this::deleteContact);
         contactForm.addListener(ContactForm.CloseEvent.class, e -> closeContactEditor());
 
+        Div contentDiv = new Div(grid,contactForm);
+        contentDiv.addClassName("content");
+        contentDiv.setSizeFull();
 
-        Div content = new Div(grid,contactForm);
-        content.addClassName("content");
-        content.setSizeFull();
-
-        add(configureToolBar(),content);
+        add(configureToolBar(),contentDiv);
         updateList();
         closeContactEditor();
+
+    }
+
+    private HorizontalLayout configureToolBar() {
+
+        filterText.setPlaceholder("Filter by name..");
+        filterText.setClearButtonVisible(true);
+        filterText.setValueChangeMode(ValueChangeMode.LAZY);
+        filterText.addValueChangeListener(e -> updateList());
+
+        Button addContactButton = new Button("Add contact", click -> addContact());
+        addContactButton.addClickShortcut(Key.KEY_A, KeyModifier.ALT);
+
+        HorizontalLayout toolbar = new HorizontalLayout(filterText,addContactButton);
+        toolbar.addClassName("toolbar");
+
+        return toolbar;
 
     }
 
@@ -67,22 +86,6 @@ public class ListView extends VerticalLayout {
         contactForm.setContact(null);
         contactForm.setVisible(false);
         removeClassName("editing");
-    }
-
-    private HorizontalLayout configureToolBar() {
-
-        filterText.setPlaceholder("Filter by name..");
-        filterText.setClearButtonVisible(true);
-        filterText.setValueChangeMode(ValueChangeMode.LAZY);
-        filterText.addValueChangeListener(e -> updateList());
-
-        Button addContactButton = new Button("Add contact", click -> addContact());
-
-        HorizontalLayout toolbar = new HorizontalLayout(filterText,addContactButton);
-        toolbar.addClassName("toolbar");
-
-        return toolbar;
-
     }
 
     private void addContact() {
