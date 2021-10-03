@@ -17,7 +17,7 @@ public class Company extends AbstractEntity implements Cloneable{
     private String name;
 
     @OneToMany(fetch = javax.persistence.FetchType.EAGER, mappedBy = "company")
-    private List<Contact> employees = new LinkedList<>();
+    private final List<Contact> employees = new LinkedList<>();
 
     public Company(String name) {
         this.name = name;

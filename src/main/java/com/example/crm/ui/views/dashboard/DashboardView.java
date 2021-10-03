@@ -22,8 +22,8 @@ import java.util.Map;
 @Route(value="dashboard", layout = MainLayout.class)
 public class DashboardView extends VerticalLayout {
 
-    private  ContactService contactService;
-    private  CompanyService companyService;
+    private final ContactService contactService;
+    private final CompanyService companyService;
 
     public DashboardView(ContactService contactService, CompanyService companyService) {
         this.contactService = contactService;

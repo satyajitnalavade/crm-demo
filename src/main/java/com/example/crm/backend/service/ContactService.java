@@ -18,8 +18,8 @@ import java.util.stream.Stream;
 @Service
 public class ContactService {
     private static final Logger LOGGER = Logger.getLogger(ContactService.class.getName());
-    private ContactRepository contactRepository;
-    private CompanyRepository companyRepository;
+    private final ContactRepository contactRepository;
+    private final CompanyRepository companyRepository;
 
     public ContactService(ContactRepository contactRepository,
                           CompanyRepository companyRepository) {

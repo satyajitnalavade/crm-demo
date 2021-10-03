@@ -14,7 +14,7 @@ import java.util.Map;
 @Service
 public class CompanyService {
 
-    private CompanyRepository companyRepository;
+    private final CompanyRepository companyRepository;
 
     public CompanyService(CompanyRepository companyRepository) {
         this.companyRepository = companyRepository;
